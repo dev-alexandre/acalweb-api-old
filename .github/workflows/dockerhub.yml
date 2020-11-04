@@ -1,4 +1,4 @@
-name: Docker Build
+name: Push to GCR Github Action
 
 on:
   push:
@@ -6,13 +6,12 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-push-to-gcr:
     runs-on: ubuntu-latest
-      name: Google Cloud Container Registry
-      uses: mattes/gce-docker-push-action@v1.0.0
-      with:
-        creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        src: org/local-image:build
-        dst: gcr.io/my-project/my-image:${{github.run_number}}-${{github.sha}}
-
-
+    steps:
+      - uses: RafikFarhad/push-to-gcr-github-action@v3
+        with:
+          gcloud_service_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          registry: gcr.io
+          project_id: webacal
+          image_name: webacal
