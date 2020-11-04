@@ -7,7 +7,6 @@ on:
 jobs:
   buildx:
     runs-on: ubuntu-latest
-    steps:
       uses: mattes/gce-docker-push-action@v1
       with:
         creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
