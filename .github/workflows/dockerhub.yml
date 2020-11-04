@@ -8,8 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-      uses: mattes/gce-docker-push-action@v1
+      name: Google Cloud Container Registry
+      uses: mattes/gce-docker-push-action@v1.0.0
       with:
         creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         src: org/local-image:build
         dst: gcr.io/my-project/my-image:${{github.run_number}}-${{github.sha}}
+
+
