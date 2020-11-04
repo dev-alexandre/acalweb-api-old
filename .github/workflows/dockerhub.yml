@@ -1,8 +1,9 @@
-name: Deploy and push to Dockerhub
+name: Build and Deploy to GKE
 
 on:
   push:
-    branches: master
+    branches:
+      - main
 
 jobs:
   main:
