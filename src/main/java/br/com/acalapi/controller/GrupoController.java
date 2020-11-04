@@ -1,10 +1,8 @@
 package br.com.acalapi.controller;
 
 import br.com.acalapi.entity.Grupo;
-import br.com.acalapi.entity.Matricula;
 import br.com.acalapi.filtro.Filtro;
 import br.com.acalapi.repository.GrupoRepository;
-import br.com.acalapi.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

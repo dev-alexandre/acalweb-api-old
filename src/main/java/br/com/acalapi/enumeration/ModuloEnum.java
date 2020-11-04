@@ -8,9 +8,9 @@ public enum ModuloEnum {
     MATRICULA("matricula"),
     LOGRADOURO("logradouro");
 
-    public String modulo;
+    public final String modulo;
 
-    private ModuloEnum(String modulo) {
+    ModuloEnum(String modulo) {
         this.modulo = modulo;
     }
 }

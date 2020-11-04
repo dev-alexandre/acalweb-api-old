@@ -40,7 +40,9 @@ public class TokenAuthenticationService {
             .claim("title", usuario.getTitle())
             .claim("name", usuario.getName())
             .claim("key", usuario.getId())
-            .setExpiration(Date.from(LocalDateTime.now().plusHours(HOURS_TO_EXPIRATION).atZone(ZoneId.systemDefault()).toInstant()))
+            .setExpiration(
+                Date.from(LocalDateTime.now().plusHours(HOURS_TO_EXPIRATION).atZone(ZoneId.systemDefault()).toInstant())
+            )
             .signWith(SignatureAlgorithm.HS512,
                 new SecretKeySpec(
                     DatatypeConverter.parseBase64Binary(SECRET),

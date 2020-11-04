@@ -10,9 +10,9 @@ public enum AcaoEnum {
     EDITAR("editar"),
     DELETAR("deletar");
 
-    private String acao;
+    private final String acao;
 
-    private AcaoEnum(String acao) {
+    AcaoEnum(String acao) {
         this.acao = acao;
     }
 

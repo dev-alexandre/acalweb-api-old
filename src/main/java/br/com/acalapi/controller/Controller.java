@@ -22,7 +22,7 @@ public abstract class Controller<T extends AE, F extends Filtro> {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    private Class<T> persistentClass;
+    private final Class<T> persistentClass;
 
     public Pageable getPageable(F filtro) {
         return PageRequest.of(filtro.getPage(), filtro.getSize());
@@ -67,10 +67,10 @@ public abstract class Controller<T extends AE, F extends Filtro> {
         }
         */
         return
-                (Page<T>) PageableExecutionUtils.getPage(
-                        mongoTemplate.find(query, persistentClass),
-                        pageable,
-                        () -> mongoTemplate.count(Query.of(query).limit(-1).skip(-1), persistentClass));
+            PageableExecutionUtils.getPage(
+                mongoTemplate.find(query, persistentClass),
+                pageable,
+                () -> mongoTemplate.count(Query.of(query).limit(-1).skip(-1), persistentClass));
     }
 
     @RequestMapping(value="/paginar", method = RequestMethod.POST)
@@ -79,7 +79,7 @@ public abstract class Controller<T extends AE, F extends Filtro> {
         Query query = new Query().with(pageable);
 
         return
-            (Page<T>) PageableExecutionUtils.getPage(
+            PageableExecutionUtils.getPage(
                 mongoTemplate.find(query, persistentClass),
                 pageable,
                 () -> mongoTemplate.count(Query.of(query).limit(-1).skip(-1), persistentClass));
