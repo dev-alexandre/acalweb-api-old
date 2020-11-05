@@ -2,7 +2,7 @@ name: Build and Push Dockerhub
 
 on:
   push:
-    branches: master
+    branches: main
 
 jobs:
   main:
@@ -33,6 +33,3 @@ jobs:
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-
-
-#build 7
