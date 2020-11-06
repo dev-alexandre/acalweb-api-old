@@ -14,4 +14,6 @@ public class Contrato extends AE{
     private Boolean indContratoPrincipal;
     private BigDecimal valor;
 
+    private boolean habilitado;
+
 }

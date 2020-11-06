@@ -10,6 +10,6 @@ public class Matricula extends AE {
     private String numero;
     private String letra;
     private String hidrometro;
-    private Logradouro Logradouro;
+    private Logradouro logradouro;
 
 }

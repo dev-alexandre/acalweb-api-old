@@ -15,6 +15,16 @@ public class ClienteController extends Controller<Cliente, Filtro>{
     @Autowired
     private ClienteRepository repository;
 
+    @RequestMapping(value="/listar/{nome}", method = RequestMethod.GET)
+    public List<Cliente> listarPorNome(@PathVariable String nome){
+        return repository.findByname(nome);
+    }
+
+    @RequestMapping(value="/atualizar", method = RequestMethod.PUT)
+    public void atualizar(@RequestBody Cliente t){
+        repository.save(t);
+    }
+
     @RequestMapping(value="/listar", method = RequestMethod.GET)
     public List<Cliente> listar(){
         return repository.findAll();
@@ -34,5 +44,9 @@ public class ClienteController extends Controller<Cliente, Filtro>{
     public void deletar(@PathVariable String id) {
         repository.deleteById(id);
     }
+
+
+
+
 
 }

@@ -43,6 +43,7 @@ public abstract class Controller<T extends AE, F extends Filtro> {
         return mongoTemplate.findById(id, persistentClass);
     }
 
+
     @RequestMapping(value="paginar", method = RequestMethod.GET)
     public Page<T> paginar() {
         Pageable pageable = PageRequest.of(0, 10);

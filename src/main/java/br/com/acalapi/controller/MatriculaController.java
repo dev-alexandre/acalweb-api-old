@@ -1,8 +1,11 @@
 package br.com.acalapi.controller;
 
+import br.com.acalapi.dto.SelectDTO;
+import br.com.acalapi.entity.Grupo;
 import br.com.acalapi.entity.Matricula;
 import br.com.acalapi.filtro.Filtro;
 import br.com.acalapi.repository.MatriculaRepository;
+import br.com.acalapi.service.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,9 @@ public class MatriculaController extends Controller<Matricula, Filtro>{
 
     @Autowired
     private MatriculaRepository repository;
+
+    @Autowired
+    private MatriculaService service;
 
     @RequestMapping(value="/listar", method = RequestMethod.GET)
     public List<Matricula> listar(){
@@ -33,6 +39,11 @@ public class MatriculaController extends Controller<Matricula, Filtro>{
     @RequestMapping(value="/deletar/{id}", method = RequestMethod.DELETE)
     public void deletar(@PathVariable String id) {
         repository.deleteById(id);
+    }
+
+    @RequestMapping(value="/selecionar/{nome}", method = RequestMethod.GET)
+    public List<SelectDTO<Matricula>> Selecionar(@PathVariable String nome) {
+        return service.listarSelect(nome);
     }
 
 }
