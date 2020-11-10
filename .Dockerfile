@@ -10,7 +10,7 @@ COPY . .
 RUN ./gradlew build
 
 FROM openjdk:11
-ENV ARTIFACT_NAME=acal-api-0.0.1.jar.jar
+ENV ARTIFACT_NAME=acal-api-0.0.1.jar
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 COPY --from=TEMP_BUILD_IMAGE $APP_HOME/build/libs/$ARTIFACT_NAME .
