@@ -25,7 +25,6 @@ public class Usuario extends AE implements UserDetails {
 
     private String name;
     private String title;
-    private String img;
 
     private List<Funcao> funcoes;
 

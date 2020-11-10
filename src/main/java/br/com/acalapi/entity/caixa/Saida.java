@@ -1,12 +1,13 @@
-package br.com.acalapi.entity;
+package br.com.acalapi.entity.caixa;
 
+import br.com.acalapi.entity.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-public class Contrato extends AE{
+public class Saida extends AE {
 
     private Cliente cliente;
     private Matricula matricula;

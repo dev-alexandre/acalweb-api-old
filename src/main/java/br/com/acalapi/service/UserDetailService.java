@@ -17,9 +17,6 @@ public class UserDetailService implements UserDetailsService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Autowired
-    private UsuarioRepository repository;
-
     @Override
     public UserDetails loadUserByUsername(String nome) throws UsernameNotFoundException {
         return

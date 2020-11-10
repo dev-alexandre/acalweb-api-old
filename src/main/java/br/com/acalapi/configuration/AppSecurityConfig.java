@@ -29,8 +29,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .cors().and()
             .authorizeRequests()
+            .antMatchers(HttpMethod.GET,"/").permitAll()
             .antMatchers(HttpMethod.POST,"/login").permitAll()
             .antMatchers(HttpMethod.POST,"/logout").permitAll()
+            .antMatchers(HttpMethod.GET,"/v2/api-docs").permitAll()
+            .antMatchers(HttpMethod.GET,"/swagger-ui.html").permitAll()
+
+
             .anyRequest().authenticated()
 
             .and()

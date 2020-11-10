@@ -4,46 +4,38 @@ import br.com.acalapi.entity.Boleto;
 import br.com.acalapi.entity.Contrato;
 import br.com.acalapi.entity.Referencia;
 import br.com.acalapi.filtro.Filtro;
+import br.com.acalapi.repository.BoletoRepository;
 import br.com.acalapi.repository.ContratoRepository;
 import br.com.acalapi.service.ContratoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/contrato")
-public class ContratoController extends Controller<Contrato, Filtro>{
+@RequestMapping("/boleto")
+public class BoletoController extends Controller<Boleto, Filtro>{
 
     @Autowired
-    private ContratoRepository repository;
-
-    @Autowired
-    private ContratoService service;
-
-    @RequestMapping(value="/listar/{mes}/{ano}", method = RequestMethod.GET)
-    public List<Contrato> listar(@PathVariable int mes, @PathVariable int ano){
-        return service.listarContratosDisponiveisPor(new Referencia(mes, ano));
-    }
+    private BoletoRepository repository;
 
     @RequestMapping(value="/listar", method = RequestMethod.GET)
-    public List<Contrato> listar(){
+    public List<Boleto> listar(){
         return repository.findAll();
     }
 
     @RequestMapping(value="/salvar", method = RequestMethod.POST)
-    public void salvar(@RequestBody Contrato t){
+    public void salvar(@RequestBody Boleto t){
         repository.save(t);
     }
 
     @RequestMapping(value="/salvar-todos", method = RequestMethod.POST)
-    public void salvartodos(@RequestBody List<Contrato> t){
+    public void salvartodos(@RequestBody List<Boleto> t){
         repository.saveAll(t);
     }
 
     @RequestMapping(value="/editar", method = RequestMethod.PUT)
-    public void editar(@RequestBody Contrato t){
+    public void editar(@RequestBody Boleto t){
         repository.save(t);
     }
 
