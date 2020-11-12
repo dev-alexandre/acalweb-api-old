@@ -7,6 +7,7 @@ import br.com.acalapi.filtro.Filtro;
 import br.com.acalapi.repository.MatriculaRepository;
 import br.com.acalapi.service.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,15 @@ public class MatriculaController extends Controller<Matricula, Filtro>{
 
     @RequestMapping(value="/listar", method = RequestMethod.GET)
     public List<Matricula> listar(){
-        return repository.findAll();
+        return
+            repository.findAll();
+
+    }
+
+    @Override
+    public Sort getSort() {
+        return
+            Sort.by("logradouro.tipoLogradouro.nome").and(Sort.by("logradouro.nome").and(Sort.by("numero").and(Sort.by("letra"))));
     }
 
     @RequestMapping(value="/salvar", method = RequestMethod.POST)

@@ -17,6 +17,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import static java.util.Objects.isNull;
+
 public abstract class Controller<T extends AE, F extends Filtro> {
 
     @Autowired
@@ -76,7 +78,14 @@ public abstract class Controller<T extends AE, F extends Filtro> {
 
     @RequestMapping(value="/paginar", method = RequestMethod.POST)
     public Page<T> paginar(@RequestBody F pf) {
-        Pageable pageable = getPageable(pf);
+        Pageable pageable;
+
+        if(isNull(getSort())){
+            pageable = getPageable(pf);
+        } else {
+            pageable = getPageable(pf, getSort());
+        }
+
         Query query = new Query().with(pageable);
 
         return
@@ -115,8 +124,14 @@ public abstract class Controller<T extends AE, F extends Filtro> {
         return criteria;
     }
 
+    public Sort getSort() {
+        return null;
+    }
+
     /*
+    *
     public Sort getSort(F filtro) throws IllegalArgumentException, IllegalAccessException{
+
         Sort sort = null;
 
         for (Field f : filtro.getClass().getDeclaredFields()) {
@@ -137,5 +152,6 @@ public abstract class Controller<T extends AE, F extends Filtro> {
 
         return sort;
     }
-     */
+    */
+
 }

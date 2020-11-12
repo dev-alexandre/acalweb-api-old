@@ -1,13 +1,17 @@
 package br.com.acalapi.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
-@Document(collection = "matricula")
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Matricula extends AE {
 
-    private String numero;
+    private int numero;
     private String letra;
     private String hidrometro;
     private Logradouro logradouro;

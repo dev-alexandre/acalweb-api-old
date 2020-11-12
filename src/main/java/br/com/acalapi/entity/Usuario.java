@@ -1,6 +1,9 @@
 package br.com.acalapi.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,11 +14,14 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @Document(collection = "seguranca")
 public class Usuario extends AE implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    @Indexed(unique = true, name = "usuario.login")
+    @Indexed(unique = true, name = "usuario.email")
     private String email;
     private String password;
     private boolean isAccountNonExpired;
