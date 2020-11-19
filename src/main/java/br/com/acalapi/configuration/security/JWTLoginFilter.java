@@ -1,7 +1,6 @@
 package br.com.acalapi.configuration.security;
 
 
-import br.com.acalapi.entity.Usuario;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

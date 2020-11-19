@@ -26,10 +26,8 @@ public class MatriculaController extends Controller<Matricula, Filtro>{
     public List<Matricula> listar(){
         return
             repository.findAll();
-
     }
 
-    @Override
     public Sort getSort() {
         return
             Sort.by("logradouro.tipoLogradouro.nome").and(Sort.by("logradouro.nome").and(Sort.by("numero").and(Sort.by("letra"))));

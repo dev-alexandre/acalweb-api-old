@@ -1,6 +1,5 @@
 package br.com.acalapi.controller;
 
-import br.com.acalapi.entity.Usuario;
 import br.com.acalapi.filtro.Filtro;
 import br.com.acalapi.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
